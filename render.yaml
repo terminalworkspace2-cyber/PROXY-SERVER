@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: litellm-gateway
+    runtime: image
+    image:
+      url: ghcr.io/berriai/litellm:main-stable
+    plan: starter
+    envVars:
+      - key: PORT
+        value: "4000"
+      - key: LITELLM_MASTER_KEY
+        generateValue: true
+      - key: STORE_MODEL_IN_DB
+        value: "True"
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+    healthCheckPath: /health/liveliness
+    autoDeploy: true
