@@ -1,19 +1,12 @@
-model_list:
-  - model_name: coding-claude
-    litellm_params:
-      model: anthropic/claude-sonnet-4-20250514
-      api_key: os.environ/ANTHROPIC_API_KEY
-
-  - model_name: coding-gpt
-    litellm_params:
-      model: openai/gpt-4o
-      api_key: os.environ/OPENAI_API_KEY
-
-  - model_name: coding-deepseek
-    litellm_params:
-      model: deepseek/deepseek-chat
-      api_key: os.environ/DEEPSEEK_API_KEY
+model_list: []
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
-  store_model_in_db: true
+  store_model_in_db: false
+
+mcp_servers:
+  deepwiki:
+    url: https://mcp.deepwiki.com/mcp
+    transport: http
+    description: Free documentation and repository research
+    allow_all_keys: true

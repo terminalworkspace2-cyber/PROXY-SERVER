@@ -1,0 +1,7 @@
+.git
+.env
+.env.*
+*.key
+*.log
+node_modules
+models

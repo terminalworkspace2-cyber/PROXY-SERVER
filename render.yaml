@@ -1,22 +1,12 @@
 services:
   - type: web
-    name: litellm-gateway
-    runtime: image
-    image:
-      url: ghcr.io/berriai/litellm:main-stable
+    name: litellm-mcp-gateway
+    runtime: docker
     plan: starter
-    envVars:
-      - key: PORT
-        value: "4000"
-      - key: LITELLM_MASTER_KEY
-        generateValue: true
-      - key: STORE_MODEL_IN_DB
-        value: "True"
-      - key: ANTHROPIC_API_KEY
-        sync: false
-      - key: OPENAI_API_KEY
-        sync: false
-      - key: DEEPSEEK_API_KEY
-        sync: false
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     healthCheckPath: /health/liveliness
     autoDeploy: true
+    envVars:
+      - key: LITELLM_MASTER_KEY
+        generateValue: true
