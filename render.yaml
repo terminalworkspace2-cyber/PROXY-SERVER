@@ -1,12 +1,17 @@
 services:
   - type: web
-    name: litellm-mcp-gateway
-    runtime: docker
-    plan: starter
-    dockerfilePath: ./Dockerfile
-    dockerContext: .
-    healthCheckPath: /health/liveliness
-    autoDeploy: true
+    name: omniroute-gateway
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
     envVars:
-      - key: LITELLM_MASTER_KEY
+      - key: GATEWAY_API_KEY
         generateValue: true
+      - key: UPSTREAM_BASE_URL
+        sync: false
+      - key: CF_ACCESS_CLIENT_ID
+        sync: false
+      - key: CF_ACCESS_CLIENT_SECRET
+        sync: false
